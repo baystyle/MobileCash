@@ -68,10 +68,7 @@ export class Tab2Page {
       this.transactionList = data
     })
   }
-
   
-
-
   async ActionSheet(transaction) {
     const actionSheet = await this.actionCtr.create({
       header: 'รายการ',

@@ -13,7 +13,6 @@ import { Observable } from 'rxjs';
 })
 export class Tab3Page {
 
-  constructor(private actionCtr:ActionSheetController, private modalCtr:ModalController,private http:HttpClient,private alertCtr:AlertController) {
-  }
+  constructor(private actionCtr:ActionSheetController, private modalCtr:ModalController,private http:HttpClient,private alertCtr:AlertController) {}
 
 }
