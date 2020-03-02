@@ -8,3 +8,16 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-content class="content">
+      <ion-card class="card-nomal">
+        <ion-card-header>
+          <ion-card-subtitle>เพิ่มหมวดหมู่</ion-card-subtitle>
+          <ion-card-title>หมวดหมู่</ion-card-title>
+        </ion-card-header>
+             <ion-item>
+               <ion-label>ชื่อหมวดหมู่:</ion-label>
+               <ion-input [(ngModel)]="categoryName" type="text" placeholder="ใส่ชื่อหมวดหมู่"></ion-input>
+             </ion-item><br>
+             <ion-button  expand='outline' style="float: right;" (click)="conFirm()">เพิ่มหมวดหมู่</ion-button><br>  
+      </ion-card>
+</ion-content>

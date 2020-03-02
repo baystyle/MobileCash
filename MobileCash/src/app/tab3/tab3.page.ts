@@ -12,7 +12,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-
+  private categoryList
   constructor(private actionCtr:ActionSheetController, private modalCtr:ModalController,private http:HttpClient,private alertCtr:AlertController) {}
 
+  async insertCategory() {
+    const modal = await this.modalCtr.create({
+      component: InsertCategoryPage
+    });
+    return await modal.present().then(_=>{})
+  }
 }
+
