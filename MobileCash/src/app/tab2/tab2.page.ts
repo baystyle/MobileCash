@@ -39,6 +39,18 @@ export class Tab2Page {
     return await modal.present().then(_=>{})
   }
 
+  deleteTransaction(transaction) {
+    let url = 'http://localhost/MCash/Transaction/deleteTransaction.php';
+    let dataPost = new FormData();
+    dataPost.append('tst_id',transaction.tst_id);
+    let data:Observable<any> = this.http.post(url,dataPost);
+    data.subscribe(data => {
+      console.log('delete success!!');
+      
+    })    
+    
+  }
+
   async detailTransaction(transaction) {
     const modal = await this.modalCtr.create({
       component: DetailTransactionPage,
@@ -109,8 +121,8 @@ export class Tab2Page {
         }, {
           text: 'ยืนยัน',
           handler: () => {
-            //this.deleteTransaction(transaction)
-            //this.successAlert()
+            this.deleteTransaction(transaction)
+            this.successAlert()
           }
         }
       ]
