@@ -36,17 +36,6 @@ export class Tab3Page {
     return await modal.present().then(_=>{})
   }
 
-  deleteCategory(category){
-    let url = 'http://localhost/Mcash/Category/deleteCategory.php';
-    let dataPost = new FormData();
-    dataPost.append('cate_id',category.cate_id);
-    let data:Observable<any> = this.http.post(url,dataPost);
-    data.subscribe(data => {
-      console.log('delete success!!');
-      
-    })    
-  }
-
   getCategory(){
     let url = 'http://localhost/MCash/Category/getCategory.php';
     let data:Observable<any> = this.http.post(url,'');
@@ -102,8 +91,8 @@ export class Tab3Page {
         }, {
           text: 'ยืนยัน',
           handler: () => {
-            this.deleteCategory(category)
-            this.successAlert()
+            // this.deleteCategory(category)
+            // this.successAlert()
           }
         }
       ]
@@ -115,7 +104,7 @@ export class Tab3Page {
   async successAlert() {
     const alert = await this.alertCtr.create({
       header: 'Completed!!',
-      subHeader: 'บันทึกข้อมูลgit สำเร็จ',
+      subHeader: 'บันทึกข้อมูลสำเร็จ',
       message: '',
       buttons: ['OK']
     });
