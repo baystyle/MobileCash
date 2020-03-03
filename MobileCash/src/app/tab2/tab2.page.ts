@@ -52,11 +52,6 @@ export class Tab2Page {
     
   }
 
-  test(){
-console.log("Atikom");
-
-  }
-
   async detailTransaction(transaction) {
     const modal = await this.modalCtr.create({
       component: DetailTransactionPage,
