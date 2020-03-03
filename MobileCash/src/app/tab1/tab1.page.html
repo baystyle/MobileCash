@@ -1,44 +1,54 @@
 <ion-header>
-  <ion-toolbar color="primary">  
+  <ion-toolbar color="primary">
     <ion-title>MCash</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-text-center" >
+<ion-content [fullscreen]="true" class="ion-text-center">
   <ion-card>
-  <div style="background-color: rgb(245, 150, 42);color: white;"><h5>สรุปรายรับรายจ่าย</h5></div><br>
-  <ion-text><b>วันที่ปัจจุบัน</b></ion-text><br>
-  <ion-text color="primary">{{dateCurrent}}</ion-text><br><br>
-  <ion-text><b>ยอดเงินคงเหลือ</b></ion-text><br>
-  <ion-text color="primary">9680</ion-text><br><br><br>
-  <ion-text><b>สรุปรายรับรายจ่าย</b></ion-text>
-  <ion-row>
-    <ion-col size="6">
-      <ion-text><b>วันเริ่มต้น</b></ion-text><br>
-      <ion-datetime [(ngModel)]="startDate"  pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" placeholder="{{startDate}}"></ion-datetime>
-    </ion-col>
-    <ion-col size="6">
-      <ion-text><b>วันสิ้นสุด</b></ion-text><br>
-      <ion-datetime [(ngModel)]="endDate" pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" placeholder="{{endDate}}"></ion-datetime>
-    </ion-col>
-  </ion-row>
-  <!-- <ion-button (click)="calculate()" expand="block">
-    calculate cost
-  </ion-button> -->
-  <ion-text><b>ค่าใช้จ่ายทั้งหมด</b></ion-text><br>
-  <ion-text color="primary">320</ion-text><br><br>
-  <ion-row>
-    <ion-col size="6">
-      <ion-text><b>รายจ่าย</b></ion-text><br>
-      <ion-text color="primary">ค่าอาหาร : 200.00</ion-text><br>
-      <ion-text color="primary">ค่าน้ำดื่ม : 20.00</ion-text><br>
-      <ion-text color="primary">ค่าเดินทาง : 100.00</ion-text><br>
-    </ion-col>
-    <ion-col size="6">
-      <ion-text><b>รายรับ</b></ion-text><br>
-      <ion-text color="primary">เงินเดือน : 10,000.00</ion-text><br><br>
-    </ion-col>
-  </ion-row>
-  <br><br>
-</ion-card>
+    <div style="background-color: rgb(245, 150, 42);color: white;">
+      <h5>สรุปรายรับรายจ่าย</h5>
+    </div><br>
+    <ion-text><b>วันที่ปัจจุบัน</b></ion-text><br>
+    <ion-text color="primary">{{dateCurrent}}</ion-text><br><br>
+    <ion-text><b>ยอดเงินคงเหลือ</b></ion-text><br>
+    <ion-text color="primary">{{balance}}</ion-text><br><br><br>
+    <ion-text><b>สรุปรายรับรายจ่าย</b></ion-text>
+    <ion-row>
+      <ion-col size="6">
+        <ion-text><b>วันเริ่มต้น</b></ion-text><br>
+        <ion-datetime [(ngModel)]="startDate" pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY"
+          placeholder="{{startDate}}"></ion-datetime>
+      </ion-col>
+      <ion-col size="6">
+        <ion-text><b>วันสิ้นสุด</b></ion-text><br>
+        <ion-datetime [(ngModel)]="endDate" pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY"
+          placeholder="{{endDate}}"></ion-datetime>
+      </ion-col>
+    </ion-row>
+    <ion-button (click)="calculate()" expand="block">
+      calculate cost
+    </ion-button>
+    <ion-text><b>ค่าใช้จ่ายทั้งหมด</b></ion-text><br>
+    <ion-text color="primary">{{this.sumCost}}</ion-text><br><br>
+    <ion-row>
+      <ion-col size="6">
+        <ion-text><b>รายจ่าย</b></ion-text><br>
+        <div *ngFor="let totalCost of totalCost">
+          <div *ngIf = "totalCost.tst_type == 'รายจ่าย';">
+            <ion-text color="primary">ค่า{{totalCost.cate_name}} : {{totalCost.sum_tst}} {{suma(totalCost.sum_tst)}}</ion-text><br>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <ion-text><b>รายรับ</b></ion-text><br>
+        <div *ngFor="let item of totalCost">
+          <div *ngIf = "item.tst_type == 'รายรับ';">
+            <ion-text color="primary">ค่า{{item.cate_name}} : {{item.sum_tst}}</ion-text><br>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <br><br>
+  </ion-card>
 </ion-content>

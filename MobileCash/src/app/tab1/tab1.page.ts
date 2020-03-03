@@ -16,12 +16,14 @@ export class Tab1Page {
   private startDate = this.datePipe.transform(new Date(),'dd/MM/yyyy');
   private endDate = this.datePipe.transform(new Date(),'dd/MM/yyyy');
   private totalCost;
+  private sumCost = 0;
 
   constructor(private datePipe:DatePipe,private http:HttpClient) {
 
     this.dateCurrent = this.datePipe.transform(new Date(),'dd/MM/yyyy');
+    console.log("123123123" + this.dateCurrent);
+    
     this.getAccount();
-  
   }
 
   getAccount(){
@@ -38,14 +40,23 @@ export class Tab1Page {
   calculate(){
     let url = 'http://localhost/Mcash/Transaction/calculateDate.php';
     let dataPost = new FormData();
+    this.startDate = this.datePipe.transform(this.startDate,'yyyy-MM-dd');
+    this.endDate = this.datePipe.transform(this.endDate,'yyyy-MM-dd');
+    console.log(this.startDate +"//// "+ this.endDate);
+    this.sumCost = 0;
     dataPost.append("start_date",this.startDate);
     dataPost.append("end_date",this.endDate);
 
     let data:Observable<any> = this.http.post(url,dataPost);
     data.subscribe(data => {
-      console.log("success");
-      this.totalCost = data[0].sum_amount;
-      console.log("sum = ",this.totalCost);
+      console.log(data);
+      this.totalCost = data;
     }) 
+    
+  }
+
+  suma (valor){
+    this.sumCost += parseInt(valor);
+    console.log(valor + "+=" +this.sumCost)
   }
 }
