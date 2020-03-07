@@ -1,3 +1,4 @@
+<!-- 60160203 นายอธิคม วงศ์วาร -->
 <ion-header>
   <ion-toolbar color="primary">  
     <ion-title>MCash</ion-title>
@@ -8,7 +9,7 @@
     <div style="background-color: rgb(245, 150, 42);color: white;"><h5>บันทีกรายรับ - รายจ่าย</h5></div><br>
     <div *ngFor="let transactionList of transactionList">
       <ion-item>
-        <ion-col size="12" (click)="ActionSheet(transactionList)">{{transactionList.tst_date}}</ion-col>
+        <ion-col size="12" (click)="ActionSheet(transactionList)">{{transactionList.tst_date | date: 'dd/MM/yyyy'}}</ion-col>
       </ion-item>
     </div>
   </ion-card>
