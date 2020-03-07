@@ -3,6 +3,14 @@
     <ion-title>MCash</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content class="content">
+  <ion-card>
+    <div class="ion-text-center" style="background-color: rgb(245, 150, 42);color: white;"><h5>หมวดหมู่</h5></div><br>
+    <ion-item *ngFor="let category of categoryList">
+      <ion-label (click)="ActionSheet(category)">{{category.cate_name}}</ion-label>
+    </ion-item><br>
+  </ion-card>
+</ion-content>
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button (click)="insertCategory()">
     <ion-icon name="add"></ion-icon>

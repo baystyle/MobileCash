@@ -13,7 +13,11 @@ import { Observable } from 'rxjs';
 })
 export class Tab3Page {
   private categoryList
-  constructor(private actionCtr:ActionSheetController, private modalCtr:ModalController,private http:HttpClient,private alertCtr:AlertController) {}
+
+
+  constructor(private actionCtr:ActionSheetController, private modalCtr:ModalController,private http:HttpClient,private alertCtr:AlertController) {
+   this.getCategory()
+  }
 
   async insertCategory() {
     const modal = await this.modalCtr.create({
@@ -21,5 +25,104 @@ export class Tab3Page {
     });
     return await modal.present().then(_=>{})
   }
+
+  async editCategory(category) {
+    const modal = await this.modalCtr.create({
+      component: EditCategoryPage,
+      componentProps: {
+        category:category
+      }
+    });
+    return await modal.present().then(_=>{})
+  }
+
+  deleteCategory(category){
+    let url = 'http://localhost/Mcash/Category/deleteCategory.php';
+    let dataPost = new FormData();
+    dataPost.append('cate_id',category.cate_id);
+    let data:Observable<any> = this.http.post(url,dataPost);
+    data.subscribe(data => {
+      console.log('delete success!!');
+      
+    })    
+  }
+
+  getCategory(){
+    let url = 'http://localhost/MCash/Category/getCategory.php';
+    let data:Observable<any> = this.http.post(url,'');
+    data.subscribe(data => {
+      this.categoryList = data
+      console.log(this.categoryList);
+    })    
+  }
+
+
+  async ActionSheet(category) {
+    const actionSheet = await this.actionCtr.create({
+      header: 'รายการ',
+      buttons: [
+        {
+          text: 'แก้ไข',
+          icon: 'create',
+          handler: () => {          
+            this.editCategory(category)
+          }
+        },
+        {
+        text: 'ลบ',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          this.conFirm(category)
+        }
+      },{
+        text: 'ยกเลิก',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+
+  async conFirm(category) {
+    const alert = await this.alertCtr.create({
+      header: 'Comfirm!!',
+      message: 'ต้องการบันทึกข้อมูลหรือไม่',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'ยืนยัน',
+          handler: () => {
+            this.deleteCategory(category)
+            this.successAlert()
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async successAlert() {
+    const alert = await this.alertCtr.create({
+      header: 'Completed!!',
+      subHeader: 'บันทึกข้อมูลสำเร็จ',
+      message: '',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  
 }
 
