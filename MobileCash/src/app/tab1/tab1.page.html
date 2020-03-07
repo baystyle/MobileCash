@@ -4,17 +4,42 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-text-center">
-  <ion-card>
-    <div style="background-color: rgb(245, 150, 42);color: white;">
-      <h5>สรุปรายรับรายจ่าย</h5>
-    </div><br>
-    <ion-text><b>วันที่ปัจจุบัน</b></ion-text><br>
-    <ion-text color="primary">{{dateCurrent}}</ion-text><br><br>
-    <ion-text><b>ยอดเงินคงเหลือ</b></ion-text><br>
-    <ion-text color="primary">{{balance}}</ion-text><br><br><br>
-    <ion-text><b>สรุปรายรับรายจ่าย</b></ion-text>
+<ion-content [fullscreen]="true" >
+  <ion-card >
+    <div style="background-color: rgb(253, 246, 148);color: rgb(58, 150, 167); box-shadow:-1px 0px 10px rgba(110, 14, 82, 0.5);">
+      <h5 class="ion-text-center" style="padding-top: 10px; padding-bottom: 10px;"><b>สรุปรายรับ-รายจ่าย</b></h5>
+    </div>
+    <ion-row class="ion-text-right">
+      <ion-col>
+        <ion-text class="ion-text-left"><b>วันนี้</b></ion-text>&nbsp;
+        <ion-text color="primary">{{dateCurrent}}</ion-text>
+      </ion-col>
+    </ion-row>
     <ion-row>
+      <ion-col size="2"></ion-col>
+      <ion-col size="10">
+        <ion-card style="margin-left:28px; border-radius: 50%; width: 190px; height: 190px; float: left;box-shadow:-1px 0px 10px rgba(110, 14, 82, 0.5);">
+          <ion-card-content>
+            <ion-row class="ion-text-center " style="padding-top: 10px;" >
+              <ion-col size="12">
+                <br><br>
+                <ion-text><b>ยอดเงินคงเหลือ</b></ion-text><br>
+                <ion-text color="primary" style="font-size:30px; color: #4bb477;">{{balance}} ฿</ion-text>
+              </ion-col>
+            </ion-row>        
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    
+    
+    <ion-row>
+      <ion-col size="12">
+        <ion-text style="padding-left: 113px;"><b>คำนวนรายรับ-รายจ่าย</b></ion-text>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row class="ion-text-center">
       <ion-col size="6">
         <ion-text><b>วันเริ่มต้น</b></ion-text><br>
         <ion-datetime [(ngModel)]="startDate" pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY"
@@ -29,7 +54,7 @@
     <ion-button (click)="calculate()" expand="block">
       calculate cost
     </ion-button>
-    <ion-text><b>ค่าใช้จ่ายทั้งหมด</b></ion-text><br>
+    <ion-text style="padding-left: 110px;"><b>ค่าใช้จ่ายทั้งหมด</b></ion-text>&nbsp;
     <ion-text color="primary">{{this.sumCost}}</ion-text><br><br>
     <ion-row>
       <ion-col size="6">
