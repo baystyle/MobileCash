@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="new-background-color">
     <ion-title>บันทึกรายรับ - รายจ่าย</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">
@@ -9,6 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
   <ion-card class="card-nomal">
       <ion-card-header>
@@ -17,28 +18,28 @@
         </ion-card-header>
     <ion-card-content>
           <ion-item>
-            <ion-label>ยอดเงินคงเหลือ:</ion-label>
+            <ion-label class="font">ยอดเงินคงเหลือ:</ion-label>
           <ion-text color="primary">{{transaction.tst_balance | currency: " " }}</ion-text>
           </ion-item>
             <ion-item>
-              <ion-label>ประเภท:</ion-label>
+              <ion-label class="font">ประเภท:</ion-label>
             <ion-select [(ngModel)]="transaction.tst_type" >
-                <ion-select-option value="รายจ่าย">รายจ่าย</ion-select-option>
-                <ion-select-option value="รายรับ">รายรับ</ion-select-option>
+                <ion-select-option class="font" value="รายจ่าย">รายจ่าย</ion-select-option>
+                <ion-select-option  class="font" value="รายรับ">รายรับ</ion-select-option>
               </ion-select>
             </ion-item>
             <ion-item>
-              <ion-label>หมวดหมู่:</ion-label>
+              <ion-label class="font">หมวดหมู่:</ion-label>
               <ion-select  [(ngModel)]="transaction.tst_cate_id">
-                <ion-select-option *ngFor="let category of categoryList" [value]="category.cate_id">{{category.cate_name}}</ion-select-option>
+                <ion-select-option class="font" *ngFor="let category of categoryList" [value]="category.cate_id">{{category.cate_name}}</ion-select-option>
               </ion-select>
             </ion-item>
           <ion-item>
-            <ion-label>จำนวนเงิน:</ion-label>
+            <ion-label class="font">จำนวนเงิน:</ion-label>
             <ion-input class="ion-text-right" type="text" [(ngModel)]="this.transaction.tst_amount"></ion-input>
           </ion-item>
       <ion-item>
-      <ion-label>รายละเอียด:</ion-label>
+      <ion-label class="font">รายละเอียด:</ion-label>
         <ion-textarea [(ngModel)]="transaction.tst_note" class="ion-text-right"></ion-textarea>
       </ion-item>
           <div>

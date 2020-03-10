@@ -16,7 +16,8 @@ export class SummaryPage {
   private startDate;
   private endDate;
   private totalCost;
-  private sumCost = 0;
+  private sumCostExpense = 0;
+  private sumCostIncome = 0;
 
   constructor(private datePipe:DatePipe,private http:HttpClient) {
     this.startDate = this.datePipe.transform(new Date());
@@ -55,10 +56,16 @@ export class SummaryPage {
     
   }
 
-  suma (valor){
+  sum_expense (valor){
     var num = parseInt(valor);
-    this.sumCost = this.sumCost + num;
-    console.log(valor + "+=" +this.sumCost)
+    this.sumCostExpense = this.sumCostExpense + num;
+    console.log(valor + "+=" +this.sumCostExpense)
+  }
+
+  sum_income (valor){
+    var num = parseInt(valor);
+    this.sumCostIncome = this.sumCostIncome + num;
+    console.log(valor + "+=" +this.sumCostIncome)
   }
 
 }

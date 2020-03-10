@@ -1,27 +1,28 @@
 <!-- 60160203 นายอธิคม วงศ์วาร -->
 <ion-header>
-  <ion-toolbar color="primary">  
-    <ion-title>MCash</ion-title>
+  <ion-toolbar class="new-background-color">
+    <ion-title class="font ion-text-center">บันทึกรายรับ - รายจ่าย</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="content">
   <ion-card class="ion-text-center">
-    <div class="ion-text-center" style="background-color: rgb(253, 246, 148);color: blue;"><h5>บันทึกรายรับ - รายจ่าย</h5></div><br>
+   
     <ion-item>
-      <ion-label class="ion-text-center">ว/ด/ป</ion-label>
-      <ion-label class="ion-text-center">ยอดเงินที่บันทึก</ion-label>
+      <ion-label class="font ion-text-center">ว/ด/ป</ion-label>
+      <ion-label class="font ion-text-center">ยอดเงินที่บันทึก</ion-label>
     </ion-item>
     <div *ngFor="let transactionList of transactionList">
       <div *ngIf="transactionList.tst_type == 'รายจ่าย'">
       <ion-item (click)="ActionSheet(transactionList)">
-        <ion-label class="ion-text-center">{{transactionList.tst_date}}</ion-label>
-        <ion-label class="ion-text-center" color="danger">- {{transactionList.tst_amount | currency: " "}}</ion-label>
+        <ion-label class="font ion-text-center">{{transactionList.tst_date | date: "dd/MM/yyyy"}}</ion-label>
+        <ion-label class="font ion-text-center" color="danger">- {{transactionList.tst_amount | currency: " "}}</ion-label>
       </ion-item>
       </div>
       <div *ngIf="transactionList.tst_type == 'รายรับ'">
         <ion-item (click)="ActionSheet(transactionList)">
-          <ion-label class="ion-text-center">{{transactionList.tst_date}}</ion-label>
-          <ion-label class="ion-text-center" color="primary">+ {{transactionList.tst_amount | currency: " "}}</ion-label>
+          <ion-label class="font ion-text-center">{{transactionList.tst_date | date: "dd/MM/yyyy"}}</ion-label>
+          <ion-label class="font ion-text-center" color="primary">+ {{transactionList.tst_amount | currency: " "}}</ion-label>
         </ion-item>
         </div>
     </div><br><br><br>

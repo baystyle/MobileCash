@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="new-background-color">
     <ion-title>บันทึกรายรับ - รายจ่าย</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">
@@ -17,33 +17,33 @@
         </ion-card-header>
     <ion-card-content>
           <ion-item>
-            <ion-label>ยอดเงินคงเหลือ:</ion-label>
+            <ion-label class="font">ยอดเงินคงเหลือ:</ion-label>
           <ion-text color="primary">{{balance}}</ion-text>
           </ion-item>
-            <ion-item>
-              <ion-label>ประเภท:</ion-label>
+            <ion-item class="font">
+              <ion-label class="font">ประเภท:</ion-label>
             <ion-select placeholder="เลือกประเภท" [(ngModel)]="type">
-                <ion-select-option value="รายจ่าย">รายจ่าย</ion-select-option>
-                <ion-select-option value="รายรับ">รายรับ</ion-select-option>
+                <ion-select-option class="font" value="รายจ่าย">รายจ่าย</ion-select-option>
+                <ion-select-option class="font" value="รายรับ">รายรับ</ion-select-option>
               </ion-select>
             </ion-item>
             <ion-item>
-              <ion-label>หมวดหมู่:</ion-label>
+              <ion-label class="font">หมวดหมู่:</ion-label>
               <ion-select placeholder="เลือกหมวดหมู่" [(ngModel)]="category">
-                <ion-select-option *ngFor="let category of categoryList" [value]="category.cate_id">{{category.cate_name}}</ion-select-option>
+                <ion-select-option class="font" *ngFor="let category of categoryList" [value]="category.cate_id">{{category.cate_name}}</ion-select-option>
               </ion-select>
             </ion-item>
           <ion-item>
-            <ion-label>จำนวนเงิน:</ion-label>
-            <ion-input class="ion-text-right" type="number" placeholder="0.00" [(ngModel)]="amount"></ion-input>
+            <ion-label class="font">จำนวนเงิน:</ion-label>
+            <ion-input class="font ion-text-right" type="number" placeholder="0.00" [(ngModel)]="amount"></ion-input>
           </ion-item>
         <ion-item>
-        <ion-label>วันที่:</ion-label>
+        <ion-label class="font">วันที่:</ion-label>
         <ion-datetime pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" placeholder="ว/ด/ป" [(ngModel)]="date"></ion-datetime>
       </ion-item>
       <ion-item>
-      <ion-label position="floating">รายละเอียด:</ion-label>
-        <ion-textarea [(ngModel)]="note"></ion-textarea>
+      <ion-label class="font" position="floating">รายละเอียด:</ion-label>
+        <ion-textarea class="font" [(ngModel)]="note"></ion-textarea>
       </ion-item>
           <div>
               <ion-button  expand='outline' style="float: right;" (click)="conFirm()">เพิ่มข้อมูล</ion-button>

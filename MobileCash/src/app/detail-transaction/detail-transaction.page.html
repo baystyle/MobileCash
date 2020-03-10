@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="new-background-color">
     <ion-title>บันทึกรายรับ - รายจ่าย</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">
@@ -10,29 +10,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="card-nomal"  style="background-color: #e65c00;">
+  <ion-card class="card-nomal">
       <ion-card-header>
-          <ion-card-subtitle style="color: white;"><h4>รายละเอีดรายรับ - รายจ่าย</h4></ion-card-subtitle>
+          <ion-card-subtitle class="font ion-text-center"><h4>รายละเอีดรายรับ - รายจ่าย</h4></ion-card-subtitle>
         </ion-card-header>
-    <ion-card-content style="background-color: #4d0099;">
+    <ion-card-content>
           <ion-item>
-            <ion-label>ยอดเงินคงเหลือ:</ion-label>
+            <ion-label class="font">ยอดเงินคงเหลือ:</ion-label>
           <ion-text color="primary">{{transaction.tst_balance | currency: " " }}</ion-text>
           </ion-item>
             <ion-item>
-              <ion-label>ประเภท:</ion-label>
+              <ion-label class="font">ประเภท:</ion-label>
               <ion-text color="primary">{{transaction.tst_type}}</ion-text>
             </ion-item>
             <ion-item>
-              <ion-label>หมวดหมู่:</ion-label>
+              <ion-label class="font">หมวดหมู่:</ion-label>
               <ion-text color="primary">{{transaction.cate_name}}</ion-text>
             </ion-item>
           <ion-item>
-            <ion-label>จำนวนเงิน:</ion-label>
+            <ion-label class="font">จำนวนเงิน:</ion-label>
             <ion-text color="primary">{{transaction.tst_amount | currency: " " }}</ion-text>
           </ion-item>
       <ion-item>
-      <ion-label>รายละเอียด:</ion-label>
+      <ion-label class="font">รายละเอียด:</ion-label>
       <ion-text color="primary">{{transaction.tst_note}}</ion-text>
       </ion-item><br>
     </ion-card-content>
