@@ -1,3 +1,4 @@
+<!-- 60160203 นายอธิคม วงศ์วาร -->
 <ion-header>
   <ion-toolbar color="primary">  
     <ion-title>MCash</ion-title>
@@ -15,6 +16,7 @@
       <ion-item (click)="ActionSheet(transactionList)">
         <ion-datetime pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" [(ngModel)]="transactionList.tst_date"></ion-datetime>
         <ion-label class="ion-text-center" color="danger">- {{transactionList.tst_amount}}</ion-label>
+
       </ion-item>
       </div>
       <div *ngIf="transactionList.tst_type == 'รายรับ'">

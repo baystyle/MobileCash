@@ -119,8 +119,6 @@ export class EditTransactionPage implements OnInit {
 
     await alert.present();
   }
-
- 
   
 
 }

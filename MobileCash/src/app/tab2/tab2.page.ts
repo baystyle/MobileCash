@@ -41,6 +41,7 @@ export class Tab2Page {
     return await modal.present().then(_=>{})
   }
 
+  // 60160203 นายอธิคม วงศ์วาร
   deleteTransaction(transaction) {
     let url = 'http://localhost/MCash/Transaction/deleteTransaction.php';
     let dataPost = new FormData();

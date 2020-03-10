@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./edit-category.page.scss'],
 })
 export class EditCategoryPage implements OnInit {
-
   constructor(private modalCtr:ModalController, private alertCtr:AlertController, private account:AccountService,private http:HttpClient) { }
   @Input() category
   @Input() index
@@ -68,5 +67,4 @@ export class EditCategoryPage implements OnInit {
 
     await alert.present();
   }
-
 }
