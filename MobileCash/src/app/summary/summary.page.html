@@ -23,7 +23,7 @@
               <ion-col size="12">
                 <br><br>
                 <ion-text><b>ยอดเงินคงเหลือ</b></ion-text><br>
-                <ion-text color="primary" style="font-size:30px; color: #4bb477;">{{balance | currency: "฿" }}</ion-text>
+                <ion-text color="primary" style="font-size:20px; color: #4bb477;">{{balance | currency: "฿" }}</ion-text>
               </ion-col>
             </ion-row>        
           </ion-card-content>
@@ -53,8 +53,8 @@
     <ion-button (click)="calculate()" expand="block" fill="outline">
       คำนวนค่าใช้จ่าย
     </ion-button>
-    <ion-text style="padding-left: 110px;"><b>ค่าใช้จ่ายทั้งหมด</b></ion-text>&nbsp;
-    <ion-text color="primary">{{this.sumCost}}</ion-text><br><br>
+    <ion-text style="padding-left: 110px;"><b>ค่าใช้จ่ายทั้งหมด</b></ion-text><br>
+    <ion-text color="primary" class="ion-text-center">{{this.sumCost}}</ion-text><br><br>
     <ion-row>
       <ion-col size="6">
         <ion-text><b>รายจ่าย</b></ion-text><br>

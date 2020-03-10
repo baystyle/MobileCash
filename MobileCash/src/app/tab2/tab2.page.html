@@ -14,14 +14,13 @@
     <div *ngFor="let transactionList of transactionList">
       <div *ngIf="transactionList.tst_type == 'รายจ่าย'">
       <ion-item (click)="ActionSheet(transactionList)">
-        <ion-datetime pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" [(ngModel)]="transactionList.tst_date"></ion-datetime>
+        <ion-label class="ion-text-center">{{transactionList.tst_date}}</ion-label>
         <ion-label class="ion-text-center" color="danger">- {{transactionList.tst_amount}}</ion-label>
-
       </ion-item>
       </div>
       <div *ngIf="transactionList.tst_type == 'รายรับ'">
         <ion-item (click)="ActionSheet(transactionList)">
-          <ion-datetime pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" [(ngModel)]="transactionList.tst_date"></ion-datetime>
+          <ion-label class="ion-text-center">{{transactionList.tst_date}}</ion-label>
           <ion-label class="ion-text-center" color="primary">+ {{transactionList.tst_amount}}</ion-label>
         </ion-item>
         </div>
