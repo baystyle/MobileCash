@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>ลงทะเบียนผู้ใช้</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+          <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <ion-card>
+    <ion-item>
+      <ion-input [(ngModel)]="username" type="text" placeholder="ชื่อบัญชีผู้ใช้"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="password" type="password" placeholder="รหัสผ่าน"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="email" type="email" placeholder="อีเมลล์"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>ประเภทบัญชี</ion-label>
+      <ion-select [(ngModel)]="accountType">
+        <ion-select-option *ngFor="let accountTypeList of accountTypeList" [value]="accountTypeList.acc_type_id">{{accountTypeList.acc_type_name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+    <ion-button expand="block" (click)="conFirm()">ลงทะเบียน</ion-button><br>
+  </ion-card>
 </ion-content>

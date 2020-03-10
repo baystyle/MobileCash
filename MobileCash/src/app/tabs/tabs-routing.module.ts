@@ -18,7 +18,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
+        path: 'transaction',
         children: [
           {
             path: '',
@@ -28,12 +28,22 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'category',
         children: [
           {
             path: '',
             loadChildren: () =>
               import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+          }
+        ]
+      },
+      {
+        path: 'summary',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../summary/summary.module').then(m => m.SummaryPageModule)
           }
         ]
       },
