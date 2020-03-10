@@ -44,7 +44,8 @@ export class SummaryPage {
     this.startDate = this.datePipe.transform(this.startDate,'yyyy-MM-dd');
     this.endDate = this.datePipe.transform(this.endDate,'yyyy-MM-dd');
     console.log(this.datePipe.transform(this.startDate,'yyyy-MM-dd') +"//// "+ this.datePipe.transform(this.endDate,'yyyy-MM-dd'));
-    this.sumCost = 0;
+    this.sumCostExpense = 0;
+    this.sumCostIncome = 0;
     dataPost.append("start_date",this.datePipe.transform(this.startDate,'yyyy-MM-dd'));
     dataPost.append("end_date",this.datePipe.transform(this.endDate,'yyyy-MM-dd'));
 
