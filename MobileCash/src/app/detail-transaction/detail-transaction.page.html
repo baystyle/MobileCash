@@ -10,12 +10,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="card-nomal">
+  <ion-card class="card-nomal"  style="background-color: #e65c00;">
       <ion-card-header>
-          <ion-card-subtitle>รายละเอีดรายรับ - รายจ่าย</ion-card-subtitle>
-          <ion-card-title>รายรับ - รายจ่าย</ion-card-title>
+          <ion-card-subtitle style="color: white;"><h2>รายละเอีดรายรับ - รายจ่าย</h2></ion-card-subtitle>
         </ion-card-header>
-    <ion-card-content>
+    <ion-card-content style="background-color: #4d0099;">
           <ion-item>
             <ion-label>ยอดเงินคงเหลือ:</ion-label>
           <ion-text color="primary">{{transaction.tst_balance | currency: " " }}</ion-text>
@@ -35,7 +34,7 @@
       <ion-item>
       <ion-label>รายละเอียด:</ion-label>
       <ion-text color="primary">{{transaction.tst_note}}</ion-text>
-      </ion-item>
+      </ion-item><br>
     </ion-card-content>
   </ion-card>
 </ion-content>
