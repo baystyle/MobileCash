@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Category</ion-title>
+  <ion-toolbar class="new-background-color">
+    <ion-title>แก้ไขหมวดหมู่</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">
           <ion-icon name="close-circle-outline"></ion-icon>
@@ -15,7 +15,7 @@
           <ion-card-title>หมวดหมู่</ion-card-title>
         </ion-card-header>
              <ion-item>
-               <ion-label>ชื่อหมวดหมู่:</ion-label>
+               <ion-label class="font">ชื่อหมวดหมู่:</ion-label>
                <ion-input type="text" placeholder="ใส่ชื่อหมวดหมู่" [(ngModel)]="category.cate_name"></ion-input>
              </ion-item><br>
              <ion-button  expand='outline' style="float: right;" (click)="conFirm()">แก้ไขหมวดหมู่</ion-button><br>  
