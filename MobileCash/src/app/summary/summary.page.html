@@ -50,11 +50,9 @@
           placeholder="{{endDate}}"></ion-datetime>
       </ion-col>
     </ion-row>
-    <ion-button (click)="calculate()" expand="block" fill="outline">
-      คำนวนค่าใช้จ่าย
-    </ion-button>
+    <ion-button (click)="calculate()" fill="outline">คำนวนค่าใช้จ่าย</ion-button><br><br>
     <ion-text><b>ค่าใช้จ่ายทั้งหมด</b></ion-text><br>
-    <ion-text color="primary" class="ion-text-center">{{this.sumCost}}</ion-text><br><br>
+    <ion-text color="primary" class="ion-text-center">{{this.sumCost}}</ion-text><br>
     <ion-row>
       <ion-col size="6">
         <ion-text><b>รายจ่าย</b></ion-text><br>
@@ -73,6 +71,6 @@
         </div>
       </ion-col>
     </ion-row>
-    <br><br>
+    <br><br><br><br>
   </ion-card>
 </ion-content>
