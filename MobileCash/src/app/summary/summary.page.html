@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
+<ion-content class="ion-text-center">
   <ion-card >
     <div style="background-color: rgb(253, 246, 148);color: rgb(58, 150, 167); box-shadow:-1px 0px 10px rgba(110, 14, 82, 0.5);">
       <h5 class="ion-text-center" style="padding-top: 10px; padding-bottom: 10px;"><b>สรุปรายรับ-รายจ่าย</b></h5>
@@ -34,7 +34,7 @@
     
     <ion-row>
       <ion-col size="12">
-        <ion-text style="padding-left: 113px;"><b>คำนวนรายรับ-รายจ่าย</b></ion-text>
+        <ion-text><h4>คำนวนรายรับ-รายจ่าย</h4></ion-text>
       </ion-col>
     </ion-row>
     
@@ -53,7 +53,7 @@
     <ion-button (click)="calculate()" expand="block" fill="outline">
       คำนวนค่าใช้จ่าย
     </ion-button>
-    <ion-text style="padding-left: 110px;"><b>ค่าใช้จ่ายทั้งหมด</b></ion-text><br>
+    <ion-text><b>ค่าใช้จ่ายทั้งหมด</b></ion-text><br>
     <ion-text color="primary" class="ion-text-center">{{this.sumCost}}</ion-text><br><br>
     <ion-row>
       <ion-col size="6">
