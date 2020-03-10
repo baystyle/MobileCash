@@ -22,7 +22,6 @@ export class SummaryPage {
     this.startDate = this.datePipe.transform(new Date());
     this.endDate = this.datePipe.transform(new Date());
     this.dateCurrent = this.datePipe.transform(new Date(),'dd/MM/yyyy');
-    console.log("123123123" + this.dateCurrent);
     
     this.getAccount();
   }
@@ -57,7 +56,8 @@ export class SummaryPage {
   }
 
   suma (valor){
-    this.sumCost += parseInt(valor);
+    var num = parseInt(valor);
+    this.sumCost = this.sumCost + num;
     console.log(valor + "+=" +this.sumCost)
   }
 
