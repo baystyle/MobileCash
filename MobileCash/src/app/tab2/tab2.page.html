@@ -15,13 +15,13 @@
       <div *ngIf="transactionList.tst_type == 'รายจ่าย'">
       <ion-item (click)="ActionSheet(transactionList)">
         <ion-label class="ion-text-center">{{transactionList.tst_date}}</ion-label>
-        <ion-label class="ion-text-center" color="danger">- {{transactionList.tst_amount}}</ion-label>
+        <ion-label class="ion-text-center" color="danger">- {{transactionList.tst_amount | currency: " "}}</ion-label>
       </ion-item>
       </div>
       <div *ngIf="transactionList.tst_type == 'รายรับ'">
         <ion-item (click)="ActionSheet(transactionList)">
           <ion-label class="ion-text-center">{{transactionList.tst_date}}</ion-label>
-          <ion-label class="ion-text-center" color="primary">+ {{transactionList.tst_amount}}</ion-label>
+          <ion-label class="ion-text-center" color="primary">+ {{transactionList.tst_amount | currency: " "}}</ion-label>
         </ion-item>
         </div>
     </div>
