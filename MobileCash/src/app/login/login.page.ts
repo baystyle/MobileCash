@@ -39,8 +39,6 @@ export class LoginPage implements OnInit {
     return await modal.present().then(_=>{})
   }
 
-  
-
   login(){
     var checkUser = 0
     for (const key in this.account) {
