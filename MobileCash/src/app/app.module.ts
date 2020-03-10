@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccountService } from './account.service';
+import { Routes, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,8 @@ import { AccountService } from './account.service';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [
     StatusBar,

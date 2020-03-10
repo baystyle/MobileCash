@@ -12,6 +12,8 @@ export class RegisterPage implements OnInit {
 
   private username
   private password
+  private fname
+  private lname
   private email
   private accountType
   private accountTypeList
@@ -30,6 +32,8 @@ export class RegisterPage implements OnInit {
     let dataPost = new FormData();
     dataPost.append('acc_username',this.username);
     dataPost.append('acc_password',this.password);
+    dataPost.append('acc_fname',this.fname);
+    dataPost.append('acc_lname',this.lname);
     dataPost.append('acc_email',this.email);
     dataPost.append('acc_type_id',this.accountType);
     dataPost.append('acc_balance',this.balance);
