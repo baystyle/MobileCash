@@ -42,6 +42,8 @@ export class LoginPage implements OnInit {
   }
 
   login(){
+    console.log("out");
+    
     var checkUser = 0
     var index
     for (const key in this.account) {
@@ -52,11 +54,15 @@ export class LoginPage implements OnInit {
     }
 
     if(checkUser == 1){
+      console.log("11");
+      
       console.log(this.account);
       this.userAccount.setAccount(this.account[index].acc_id,this.account[index].acc_fname,this.account[index].acc_lname,this.account[index].acc_balance)
-      this.navCtr.navigateRoot("/tabs/summary",this.account[index])
+      this.navCtr.navigateRoot("/tabs/summary")
     }
     else{
+      console.log("22");
+      
       this.ToastLoginError()
     }
   }
