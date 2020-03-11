@@ -7,7 +7,7 @@
 <ion-content class="content">
   <ion-card>
     <div class="font ion-text-center" style="background-color: rgb(253, 246, 148);color: blue;"><h5>หมวดหมู่</h5></div><br>
-    <ion-searchbar class="font" placeholder = "ค้นหาหมวดหมู่"></ion-searchbar>
+    <!-- <ion-searchbar class="font" placeholder = "ค้นหาหมวดหมู่"></ion-searchbar> -->
     <ion-item *ngFor="let category of categoryList">
       <ion-label class="font" (click)="ActionSheet(category)">{{category.cate_name}}</ion-label>
     </ion-item><br><br><br>
