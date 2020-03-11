@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: 'login', redirectTo: 'login', pathMatch: 'full' },
+  
+  {
+    path: '',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
@@ -25,7 +31,18 @@ const routes: Routes = [
   {
     path: 'insert-category',
     loadChildren: () => import('./insert-category/insert-category.module').then( m => m.InsertCategoryPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'summary',
+    loadChildren: () => import('./summary/summary.module').then( m => m.SummaryPageModule)
   }
+
+  
+
 ];
 @NgModule({
   imports: [

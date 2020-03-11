@@ -4,40 +4,30 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AccountService {
+  public fname;
+  public lname;
+  public userID;
+  public balance;
 
-  public category = []
-  public type = []
-  public cate = []
-  public amount = []
-  public date = []
-  public note = []
-  public balance = 0.00
-  constructor() {
-    this.category.push("ค่าน้ำดื่ม")
-    this.category.push("ค่าอาหาร")
-    this.category.push("เงินเดือน")
-    this.category.push("ค่าเดินทาง")
-    this.type.push("expense")
-    this.cate.push("ค่าอาหาร")
-    this.amount.push(35.00)
-    this.date.push("18/2/2563")
-    this.note.push("eiei")
+  setAccount(accountID,accountFname,accountLname,accountBalance){
+    this.userID = accountID
+    this.fname = accountFname
+    this.lname = accountLname
+    this.balance = accountBalance
+    console.log("fname",this.fname);
+    
   }
 
-  setCategory(category:String){
-    this.category.push(category)
+  getname(){
+    return this.fname+" "+this.lname
   }
 
-  deleteCategory(cate){
-    this.category.forEach((element, index) => {
-      if (element == cate) {
-        this.category.splice(index,1);
-      }
-    });
+  getUserID(){
+    return this.userID
   }
 
-  editCategory(index,cate){
-    this.category[index] = cate
+  getBalance(){
+    return this.balance
   }
 
 }

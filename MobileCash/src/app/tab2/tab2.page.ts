@@ -6,6 +6,7 @@ import { DetailTransactionPage } from '../detail-transaction/detail-transaction.
 import { AccountService } from '../account.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-tab2',
@@ -15,8 +16,9 @@ import { Observable } from 'rxjs';
 export class Tab2Page {
 
   private transactionList
+  private date
 
-  constructor(private actionCtr:ActionSheetController,private modalCtr:ModalController, private http:HttpClient, private alertCtr:AlertController) {
+  constructor(private actionCtr:ActionSheetController,private modalCtr:ModalController, private http:HttpClient, private alertCtr:AlertController, private datePipe:DatePipe) {
     this.get_list_transaction()
   }
 
@@ -67,6 +69,7 @@ export class Tab2Page {
     let data:Observable<any> = this.http.post(url,'');
     data.subscribe(data => {
       this.transactionList = data
+      console.log(this.transactionList);  
     })
   }
   

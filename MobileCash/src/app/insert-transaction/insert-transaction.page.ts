@@ -22,6 +22,7 @@ export class InsertTransactionPage implements OnInit {
   private note
 
   constructor(private modalCtr:ModalController, private alertCtr:AlertController, private http:HttpClient, private datePipe:DatePipe) { 
+    this.note = ""
     this.getCategory()
     this.getAccount()
   }
@@ -49,7 +50,7 @@ export class InsertTransactionPage implements OnInit {
     dataPost.append("tst_type",this.type);
     dataPost.append("tst_cate_id",this.category);
     dataPost.append("tst_amount",this.amount);
-    dataPost.append("tst_date",this.datePipe.transform(this.date,'yyyy-MM-dd'));
+    dataPost.append("tst_date",this.datePipe.transform(this.date,'yyy-MM-dd'));
     dataPost.append("tst_note",this.note);
 
     let data:Observable<any> = this.http.post(url,dataPost);

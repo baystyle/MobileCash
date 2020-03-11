@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>บันทึกรายรับ - รายจ่าย</ion-title>
+  <ion-toolbar class="new-background-color">
+    <ion-title>รายละเอีดรายรับ - รายจ่าย</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">
           <ion-icon name="close-circle-outline"></ion-icon>
@@ -12,30 +12,29 @@
 <ion-content>
   <ion-card class="card-nomal">
       <ion-card-header>
-          <ion-card-subtitle>รายละเอีดรายรับ - รายจ่าย</ion-card-subtitle>
-          <ion-card-title>รายรับ - รายจ่าย</ion-card-title>
+          <ion-card-subtitle class="font ion-text-center"><h4>รายละเอีดรายรับ - รายจ่าย</h4></ion-card-subtitle>
         </ion-card-header>
     <ion-card-content>
           <ion-item>
-            <ion-label>ยอดเงินคงเหลือ:</ion-label>
-          <ion-text color="primary">{{transaction.tst_balance}}</ion-text>
+            <ion-label class="font">ยอดเงินคงเหลือ:</ion-label>
+          <ion-text color="primary">{{transaction.tst_balance | currency: " " }}</ion-text>
           </ion-item>
             <ion-item>
-              <ion-label>ประเภท:</ion-label>
+              <ion-label class="font">ประเภท:</ion-label>
               <ion-text color="primary">{{transaction.tst_type}}</ion-text>
             </ion-item>
             <ion-item>
-              <ion-label>หมวดหมู่:</ion-label>
+              <ion-label class="font">หมวดหมู่:</ion-label>
               <ion-text color="primary">{{transaction.cate_name}}</ion-text>
             </ion-item>
           <ion-item>
-            <ion-label>จำนวนเงิน:</ion-label>
-            <ion-text color="primary">{{transaction.tst_amount}}</ion-text>
+            <ion-label class="font">จำนวนเงิน:</ion-label>
+            <ion-text color="primary">{{transaction.tst_amount | currency: " " }}</ion-text>
           </ion-item>
       <ion-item>
-      <ion-label>รายละเอียด:</ion-label>
+      <ion-label class="font">รายละเอียด:</ion-label>
       <ion-text color="primary">{{transaction.tst_note}}</ion-text>
-      </ion-item>
+      </ion-item><br>
     </ion-card-content>
   </ion-card>
 </ion-content>

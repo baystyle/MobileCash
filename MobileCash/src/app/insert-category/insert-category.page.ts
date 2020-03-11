@@ -12,24 +12,24 @@ import { Observable } from 'rxjs';
 export class InsertCategoryPage implements OnInit {
 
   private categoryName
-  constructor(private modalCtr:ModalController, private alertCtr:AlertController, private acccount:AccountService,private http:HttpClient) { }
-  
+  constructor(private modalCtr: ModalController, private alertCtr: AlertController, private acccount: AccountService, private http: HttpClient) { }
 
-  ngOnInit() {}
 
-  async close(){
+  ngOnInit() { }
+
+  async close() {
     await this.modalCtr.dismiss();
   }
 
-  insertCategory(){
+  insertCategory() {
     let url = 'http://localhost/Mcash/Category/insertCategory.php';
     let dataPost = new FormData();
-    dataPost.append("cate_name",this.categoryName);
-  
-    let data:Observable<any> = this.http.post(url,dataPost);
+    dataPost.append("cate_name", this.categoryName);
+
+    let data: Observable<any> = this.http.post(url, dataPost);
     data.subscribe(data => {
       console.log("insert success!!!");
-    }) 
+    })
   }
 
   async conFirm() {
@@ -50,6 +50,7 @@ export class InsertCategoryPage implements OnInit {
             this.insertCategory()
             this.successAlert()
             this.close()
+            // this.t3.ngOnInit()
           }
         }
       ]
