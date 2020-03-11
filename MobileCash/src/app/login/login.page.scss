@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Prompt&display=swap');
+
+*,.font{    
+    font-family: 'Prompt', sans-serif;
+}
+
+.myphoto {
+    ion-content img {
+    height: auto;
+    width: auto;
+    align-items: center;
+    }
+}
+.new-background{
+    --background: lightSalmon;
+}
