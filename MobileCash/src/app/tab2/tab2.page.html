@@ -1,15 +1,38 @@
 <!-- 60160203 นายอธิคม วงศ์วาร -->
 <ion-header>
-  <ion-toolbar color="primary">  
+  <ion-toolbar color="primary">
     <ion-title>MCash</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="content">
   <ion-card class="ion-text-center">
-    <div style="background-color: rgb(245, 150, 42);color: white;"><h5>บันทีกรายรับ - รายจ่าย</h5></div><br>
+    <div style="background-color: rgb(245, 150, 42);color: white;">
+      <h5>บันทีกรายรับ - รายจ่าย</h5>
+    </div><br>
     <div *ngFor="let transactionList of transactionList">
       <ion-item>
-        <ion-col size="12" (click)="ActionSheet(transactionList)">{{transactionList.tst_date | date: 'dd/MM/yyyy'}}</ion-col>
+        <div *ngIf="transactionList.tst_type == 'รายรับ';else other_content">         
+            <div (click)="ActionSheet(transactionList)">
+              <ion-col style="color:green" size="3">
+                <ion-text> {{transactionList.tst_date | date: 'dd/MM/yyyy'}}</ion-text>
+              </ion-col>
+              <ion-col style="margin-left: 85px;" size="6">  </ion-col>
+              <ion-col style="color:green" size="3">
+                <ion-text text-right style="text-align: right;">+{{transactionList.tst_amount}}</ion-text>
+              </ion-col>
+            </div>
+        </div>
+        <ng-template #other_content>
+          <div (click)="ActionSheet(transactionList)">
+            <ion-col style="color:red" size="3">
+              <ion-text> {{transactionList.tst_date | date: 'dd/MM/yyyy'}}</ion-text>
+            </ion-col>
+            <ion-col style="margin-left: 85px;" size="6">  </ion-col>
+            <ion-col style="color:red" size="3">
+              <ion-text text-right style="text-align: right;">-{{transactionList.tst_amount}}</ion-text>
+            </ion-col>
+          </div>
+        </ng-template>
       </ion-item>
     </div>
   </ion-card>

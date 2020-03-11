@@ -21,7 +21,7 @@ export class Tab1Page {
   constructor(private datePipe:DatePipe,private http:HttpClient) {
 
     this.dateCurrent = this.datePipe.transform(new Date(),'dd/MM/yyyy');
-    console.log("123123123" + this.dateCurrent);
+    console.log("123123123" + this.dateCurrent + "//" + this.startDate + "//" + this.endDate);
     
     this.getAccount();
   }
