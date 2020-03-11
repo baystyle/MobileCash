@@ -21,28 +21,28 @@
           <ion-text color="primary">{{balance}}</ion-text>
           </ion-item>
             <ion-item class="font">
-              <ion-label class="font">ประเภท:</ion-label>
+              <ion-label class="font">ประเภท :</ion-label>
             <ion-select placeholder="เลือกประเภท" [(ngModel)]="type">
                 <ion-select-option class="font" value="รายจ่าย">รายจ่าย</ion-select-option>
                 <ion-select-option class="font" value="รายรับ">รายรับ</ion-select-option>
               </ion-select>
             </ion-item>
             <ion-item>
-              <ion-label class="font">หมวดหมู่:</ion-label>
+              <ion-label class="font">หมวดหมู่ </ion-label>
               <ion-select placeholder="เลือกหมวดหมู่" [(ngModel)]="category">
                 <ion-select-option class="font" *ngFor="let category of categoryList" [value]="category.cate_id">{{category.cate_name}}</ion-select-option>
               </ion-select>
             </ion-item>
           <ion-item>
-            <ion-label class="font">จำนวนเงิน:</ion-label>
+            <ion-label class="font">จำนวนเงิน :</ion-label>
             <ion-input class="font ion-text-right" type="number" placeholder="0.00" [(ngModel)]="amount"></ion-input>
           </ion-item>
         <ion-item>
-        <ion-label class="font">วันที่:</ion-label>
+        <ion-label class="font">วันที่ :</ion-label>
         <ion-datetime pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" placeholder="ว/ด/ป" [(ngModel)]="date"></ion-datetime>
       </ion-item>
       <ion-item>
-      <ion-label class="font" position="floating">รายละเอียด:</ion-label>
+      <ion-label class="font" position="floating">รายละเอียด :</ion-label>
         <ion-textarea class="font" [(ngModel)]="note"></ion-textarea>
       </ion-item>
           <div>

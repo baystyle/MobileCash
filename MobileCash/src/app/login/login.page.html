@@ -1,23 +1,26 @@
-<ion-card>
+<ion-card class="new-background">
 <ion-grid>
 	<ion-row justify-content-center>
 		<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+			<div>
+				<ion-img src="https://i.pinimg.com/originals/a9/84/00/a984006cf9effb87422c2532cce16930.png"></ion-img>
+			</div>
 			<div class="ion-text-center">
-				<h4>เข้าสู่ระบบ</h4>
+				<h4 class="font">เข้าสู่ระบบ</h4>
 			</div>
 			<div padding>
-				<ion-item>
+				<ion-item class="new-background">
 					<ion-input [(ngModel)]="username" type="text" placeholder="ชื่อบัญชีผู้ใช้"></ion-input>
 				</ion-item>
 
-				<ion-item>
+				<ion-item class="new-background">
 					<ion-input [(ngModel)]="password" type="password" placeholder="รหัสผ่าน"></ion-input>
 				</ion-item>
 			</div>
 
 			<div padding>
-        <ion-button fill="outline"  expand="block" (click)="login()">เข้าสู่ระบบ</ion-button>
-        <ion-button expand="block" (click)="register()">ลงทะเบียน</ion-button>
+        <ion-button expand="block" (click)="login()" class="font">เข้าสู่ระบบ</ion-button>
+        <ion-button expand="block" (click)="register()" class="font">ลงทะเบียน</ion-button>
 
 			</div>
 		</ion-col>
