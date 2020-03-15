@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-summary',
@@ -21,7 +22,7 @@ export class SummaryPage {
   private lname
   private balance
 
-  constructor(private datePipe:DatePipe,private http:HttpClient) {
+  constructor(private datePipe:DatePipe,private http:HttpClient, private navCtr:NavController) {
     this.startDate = this.datePipe.transform(new Date());
     this.endDate = this.datePipe.transform(new Date());
     this.dateCurrent = this.datePipe.transform(new Date(),'dd/MM/yyyy');
@@ -38,7 +39,6 @@ export class SummaryPage {
     this.fname = sessionStorage.getItem('acc_fname');
     this.lname = sessionStorage.getItem('acc_lname');
     this.balance = sessionStorage.getItem('acc_balance');
-    
   }
 
   calculate(){
@@ -70,6 +70,11 @@ export class SummaryPage {
     var num = parseInt(valor);
     this.sumCostIncome = this.sumCostIncome + num;
     console.log(valor + "+=" +this.sumCostIncome)
+  }
+
+  logOut(){
+    sessionStorage.clear()
+    this.navCtr.navigateRoot("/")
   }
 
 }
