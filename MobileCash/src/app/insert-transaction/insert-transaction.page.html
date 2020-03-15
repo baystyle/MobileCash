@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar class="new-background-color">
-    <ion-title>เพิ่มรายรับ - รายจ่าย</ion-title>
+  <ion-toolbar color="primary">
+    <div style="font-size: 20px;text-align: center;">เพิ่มรายรับ - รายจ่าย</div>
     <ion-buttons slot="end">
       <ion-button (click)="close()">
           <ion-icon name="close-circle-outline"></ion-icon>
@@ -30,7 +30,11 @@
             <ion-item>
               <ion-label class="font">หมวดหมู่ </ion-label>
               <ion-select placeholder="เลือกหมวดหมู่" [(ngModel)]="category">
-                <ion-select-option class="font" *ngFor="let category of categoryList" [value]="category.cate_id">{{category.cate_name}}</ion-select-option>
+                <div *ngFor="let category of categoryList">
+                  <div *ngIf="category.cate_acc_id == accountID">
+                    <ion-select-option class="font" [value]="category.cate_id">{{category.cate_name}}</ion-select-option>
+                </div>  
+              </div>
               </ion-select>
             </ion-item>
           <ion-item>

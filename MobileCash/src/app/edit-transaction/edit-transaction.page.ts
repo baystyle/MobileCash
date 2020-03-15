@@ -12,12 +12,16 @@ import { DatePipe } from '@angular/common';
 export class EditTransactionPage implements OnInit {
   
   @Input() transaction
-  @Input() transactionNew
+  @Input() amount
   private categoryList
+  private accountID
+  private balance
 
   
   constructor(private modalCtr:ModalController, private alertCtr:AlertController, private http:HttpClient, private datePipe:DatePipe) {
     this.getCategory()
+    this.accountID = sessionStorage.getItem('acc_id')
+    this.balance = sessionStorage.getItem('acc_balance')
   }
 
   ngOnInit() {}
@@ -27,18 +31,22 @@ export class EditTransactionPage implements OnInit {
   }
 
   calculate(){
-    if(this.transactionNew.tst_balance != this.transaction.tst_amount){
+    if(this.amount != this.transaction.tst_amount){
       console.log("come in");
-      var def = (Number(this.transactionNew.tst_balance) - Number(this.transaction.tst_amount))
+      var balance = sessionStorage.getItem('acc_balance')
+      var def = (Number(this.amount) - Number(this.transaction.tst_amount))
       if(this.transaction.tst_type == "รายจ่าย")
-      this.transactionNew.tst_balance = def
+        this.balance = Number(balance) + def
       else
-      this.transactionNew.tst_balance = Number(this.transactionNew.tst_amount) - Number(def)
-      // console.log("def => ",def);
-      // console.log("moneyNew => ",this.transactionNew.tst_balance);
+        this.balance = Number(balance) - def
+      console.log("def => ",def);
+      console.log("moneyNew => ",this.balance);
+      sessionStorage.setItem('acc_balance',this.balance)
       // console.log("money => ",this.transaction.tst_amount);
       //console.log("money amount => ",this.transactionNew.tst_balance);
-    }
+    }else
+      console.log("not change");
+      
     
       
   }
@@ -49,7 +57,7 @@ export class EditTransactionPage implements OnInit {
     let url = 'http://localhost/MCash/Transaction/editTransaction.php';
     let dataPost = new FormData();
     dataPost.append("tst_id",this.transaction.tst_id);
-    dataPost.append("tst_balance",this.transactionNew.tst_balance);
+    dataPost.append("tst_balance",this.balance);
     dataPost.append("tst_type",this.transaction.tst_type);
     dataPost.append("tst_cate_id",this.transaction.tst_cate_id);
     dataPost.append("tst_amount",this.transaction.tst_amount);
@@ -65,8 +73,8 @@ export class EditTransactionPage implements OnInit {
   updateAccount(){
     let url = 'http://localhost/MCash/Account/updateAccount.php';
     let dataPost = new FormData();
-    dataPost.append("acc_id","1");
-    dataPost.append("acc_balance",this.transactionNew.tst_balance);
+    dataPost.append("acc_id",sessionStorage.getItem('acc_id'));
+    dataPost.append("acc_balance",this.balance);
 
     let data:Observable<any> = this.http.post(url,dataPost);
     data.subscribe(data => {

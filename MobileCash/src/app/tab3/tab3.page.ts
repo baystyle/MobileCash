@@ -13,10 +13,11 @@ import { Observable } from 'rxjs';
 })
 export class Tab3Page {
   private categoryList
-
+  private accountID
 
   constructor(private actionCtr:ActionSheetController, private modalCtr:ModalController,private http:HttpClient,private alertCtr:AlertController) {
    this.getCategory()
+   this.accountID = sessionStorage.getItem('acc_id');
   }
 
   async insertCategory() {

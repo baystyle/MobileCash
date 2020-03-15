@@ -11,31 +11,34 @@ import { HttpClient } from '@angular/common/http';
 export class SummaryPage {
 
   private dateCurrent;
-  private balance;
-  private account;
+  private userAccount;
   private startDate;
   private endDate;
   private totalCost;
   private sumCostExpense = 0;
   private sumCostIncome = 0;
+  private fname
+  private lname
+  private balance
 
   constructor(private datePipe:DatePipe,private http:HttpClient) {
     this.startDate = this.datePipe.transform(new Date());
     this.endDate = this.datePipe.transform(new Date());
     this.dateCurrent = this.datePipe.transform(new Date(),'dd/MM/yyyy');
-    
-    this.getAccount();
+    this.setAccount();
+    //log
+    console.log('id => ',sessionStorage.getItem('acc_id'));
+    console.log('fname => ',sessionStorage.getItem('acc_fname'));
+    console.log('lname => ',sessionStorage.getItem('acc_lname'));
+    console.log('balance => ',sessionStorage.getItem('acc_balance'));
   }
 
-  getAccount(){
-    let url = 'http://localhost/MCash/Account/getAccount.php';
-    let data:Observable<any> = this.http.post(url,'');
-    data.subscribe(data => {
-      this.balance = data[0].acc_balance
-      this.account = data[0].acc_id
-      console.log(this.balance);
-      console.log(this.account);
-    })    
+  setAccount(){
+    this.userAccount = sessionStorage.getItem('acc_id');
+    this.fname = sessionStorage.getItem('acc_fname');
+    this.lname = sessionStorage.getItem('acc_lname');
+    this.balance = sessionStorage.getItem('acc_balance');
+    
   }
 
   calculate(){

@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar class="new-background-color">
-    <ion-title>แก้ไขรายรับ - รายจ่าย</ion-title>
+  <ion-toolbar color="primary">
+    <div style="font-size: 20px;text-align: center;">แก้ไขรายรับ - รายจ่าย</div>
     <ion-buttons slot="end">
       <ion-button (click)="close()">
           <ion-icon name="close-circle-outline"></ion-icon>
@@ -17,10 +17,6 @@
           <ion-card-title>รายรับ - รายจ่าย</ion-card-title>
         </ion-card-header>
     <ion-card-content>
-          <ion-item>
-            <ion-label class="font">ยอดเงินคงเหลือ : </ion-label>
-          <ion-text color="primary">{{transaction.tst_balance | currency: " " }}</ion-text>
-          </ion-item>
             <ion-item>
               <ion-label class="font">ประเภท : </ion-label>
             <ion-select [(ngModel)]="transaction.tst_type" >
@@ -31,7 +27,11 @@
             <ion-item>
               <ion-label class="font">หมวดหมู่ : </ion-label>
               <ion-select  [(ngModel)]="transaction.tst_cate_id">
-                <ion-select-option class="font" *ngFor="let category of categoryList" [value]="category.cate_id">{{category.cate_name}}</ion-select-option>
+                <div *ngFor="let category of categoryList">
+                  <div *ngIf="category.cate_acc_id == accountID">
+                    <ion-select-option class="font" [value]="category.cate_id">{{category.cate_name}}</ion-select-option>
+                </div>  
+              </div>
               </ion-select>
             </ion-item>
           <ion-item>

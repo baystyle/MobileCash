@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar class="new-background-color">
-    <ion-title class="font ion-text-center" style="font-size: 20px;">หมวดหมู่</ion-title>
+  <ion-toolbar color="primary">
+    <div style="font-size: 20px;text-align: center;">หมวดหมู่</div>
   </ion-toolbar>
 </ion-header>
 
@@ -8,9 +8,14 @@
   <ion-card>
     <div class="font ion-text-center" style="background-color: rgb(253, 246, 148);color: blue;"><h5>หมวดหมู่</h5></div><br>
     <!-- <ion-searchbar class="font" placeholder = "ค้นหาหมวดหมู่"></ion-searchbar> -->
-    <ion-item *ngFor="let category of categoryList">
+    <div *ngFor="let category of categoryList">
+      <div *ngIf="category.cate_acc_id == accountID">
+    <ion-item >
       <ion-label class="font" (click)="ActionSheet(category)">{{category.cate_name}}</ion-label>
-    </ion-item><br><br><br>
+    </ion-item>
+  </div>
+  </div>
+    <br><br><br>
   </ion-card>
 </ion-content>
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">

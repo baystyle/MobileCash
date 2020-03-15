@@ -13,11 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  private account
+  private account //obj Account
   private username
   private password
 
-  constructor(private modalCtr:ModalController,private navCtr:NavController, private http:HttpClient, private toastCtr:ToastController, private userAccount:AccountService) {
+  constructor(private modalCtr:ModalController,private navCtr:NavController, private http:HttpClient, private toastCtr:ToastController) {
     this.getAccount()
   }
 
@@ -42,8 +42,6 @@ export class LoginPage implements OnInit {
   }
 
   login(){
-    console.log("out");
-    
     var checkUser = 0
     var index
     for (const key in this.account) {
@@ -54,15 +52,13 @@ export class LoginPage implements OnInit {
     }
 
     if(checkUser == 1){
-      console.log("11");
-      
-      console.log(this.account);
-      this.userAccount.setAccount(this.account[index].acc_id,this.account[index].acc_fname,this.account[index].acc_lname,this.account[index].acc_balance)
+      sessionStorage.setItem('acc_id',this.account[index].acc_id)
+      sessionStorage.setItem('acc_fname',this.account[index].acc_fname)
+      sessionStorage.setItem('acc_lname',this.account[index].acc_lname)
+      sessionStorage.setItem('acc_balance',this.account[index].acc_balance)
       this.navCtr.navigateRoot("/tabs/summary")
     }
-    else{
-      console.log("22");
-      
+    else{  
       this.ToastLoginError()
     }
   }

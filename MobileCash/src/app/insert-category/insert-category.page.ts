@@ -12,7 +12,10 @@ import { Observable } from 'rxjs';
 export class InsertCategoryPage implements OnInit {
 
   private categoryName
-  constructor(private modalCtr: ModalController, private alertCtr: AlertController, private acccount: AccountService, private http: HttpClient) { }
+  private accountID
+  constructor(private modalCtr: ModalController, private alertCtr: AlertController, private acccount: AccountService, private http: HttpClient) { 
+    console.log(sessionStorage.getItem('acc_id'));
+  }
 
 
   ngOnInit() { }
@@ -22,10 +25,11 @@ export class InsertCategoryPage implements OnInit {
   }
 
   insertCategory() {
+    var accountID = sessionStorage.getItem('acc_id')
     let url = 'http://localhost/Mcash/Category/insertCategory.php';
     let dataPost = new FormData();
     dataPost.append("cate_name", this.categoryName);
-
+    dataPost.append("cate_acc_id", accountID);
     let data: Observable<any> = this.http.post(url, dataPost);
     data.subscribe(data => {
       console.log("insert success!!!");

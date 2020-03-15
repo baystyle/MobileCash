@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage{
 
   private username
   private password
@@ -24,9 +24,6 @@ export class RegisterPage implements OnInit {
     this.balance = 0
   }
 
-  ngOnInit() {
-  }
-
   register(){
     let url = 'http://localhost/mcash/Account/insertAccount.php';
     let dataPost = new FormData();
@@ -40,7 +37,7 @@ export class RegisterPage implements OnInit {
     
     let data:Observable<any> = this.http.post(url,dataPost);
     data.subscribe(data => {
-      console.log("insert success!!!");
+      console.log("register success!!!");
       this.close()
     }) 
     

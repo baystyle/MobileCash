@@ -10,13 +10,12 @@ export class AccountService {
   public balance;
 
   setAccount(accountID,accountFname,accountLname,accountBalance){
-    this.userID = accountID
-    this.fname = accountFname
-    this.lname = accountLname
-    this.balance = accountBalance
-    console.log("fname",this.fname);
-    
+    this.userID = sessionStorage.getItem('acc_id');
+    this.fname = sessionStorage.getItem('acc_fname');
+    this.lname = sessionStorage.getItem('acc_lname');
+    this.balance = sessionStorage.getItem('acc_balance');
   }
+
 
   getname(){
     return this.fname+" "+this.lname

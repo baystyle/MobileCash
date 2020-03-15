@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class InsertTransactionPage implements OnInit {
 
-  private account
+  private accountID
   private categoryList
   private category
   private balance
@@ -34,16 +34,21 @@ export class InsertTransactionPage implements OnInit {
   }
 
   calculate(){
-    if(this.type == "รายจ่าย")
+    if(this.type == "รายจ่าย"){
+      
       this.balance = Number(this.balance) - Number(this.amount)
-    else
+    }
+    else{
       this.balance = Number(this.balance) + Number(this.amount)
+    }
+    sessionStorage.setItem('acc_balance',this.balance)
       
   }
 
   insertTransaction(){
     this.calculate()
     this.updateAccount()
+    
     let url = 'http://localhost/MCash/Transaction/insertTransaction.php';
     let dataPost = new FormData();
     dataPost.append("tst_balance",this.balance);
@@ -52,6 +57,7 @@ export class InsertTransactionPage implements OnInit {
     dataPost.append("tst_amount",this.amount);
     dataPost.append("tst_date",this.datePipe.transform(this.date,'yyy-MM-dd'));
     dataPost.append("tst_note",this.note);
+    dataPost.append("tst_acc_id",this.accountID);
 
     let data:Observable<any> = this.http.post(url,dataPost);
     data.subscribe(data => {
@@ -69,25 +75,19 @@ export class InsertTransactionPage implements OnInit {
   }
 
   getAccount(){
-    let url = 'http://localhost/MCash/Account/getAccount.php';
-    let data:Observable<any> = this.http.post(url,'');
-    data.subscribe(data => {
-      this.balance = data[0].acc_balance
-      this.account = data[0].acc_id
-      console.log(this.balance);
-      console.log(this.account);
-    })    
+    this.accountID = sessionStorage.getItem('acc_id')
+    this.balance = sessionStorage.getItem('acc_balance')    
   }
 
   updateAccount(){
     let url = 'http://localhost/MCash/Account/updateAccount.php';
     let dataPost = new FormData();
-    dataPost.append("acc_id",this.account);
+    dataPost.append("acc_id",this.accountID);
     dataPost.append("acc_balance",this.balance);
 
     let data:Observable<any> = this.http.post(url,dataPost);
     data.subscribe(data => {
-      console.log("insert success!!!");
+      console.log("update account success!!!");
     }) 
   }
 

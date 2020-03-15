@@ -16,10 +16,11 @@ import { DatePipe } from '@angular/common';
 export class Tab2Page {
 
   private transactionList
-  private date
+  private accountID
 
   constructor(private actionCtr:ActionSheetController,private modalCtr:ModalController, private http:HttpClient, private alertCtr:AlertController, private datePipe:DatePipe) {
     this.get_list_transaction()
+    this.accountID = sessionStorage.getItem('acc_id');
   }
 
   async insertTransaction() {
@@ -35,7 +36,7 @@ export class Tab2Page {
       component: EditTransactionPage,
       componentProps: {
         transaction:transaction,
-        transactionNew:transaction
+        amount:transaction.tst_amount
       }
     });
     return await modal.present().then(_=>{})
