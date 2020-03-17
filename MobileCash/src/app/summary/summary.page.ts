@@ -35,7 +35,7 @@ export class SummaryPage {
   }
 
   setAccount(){
-    this.userAccount = sessionStorage.getItem('acc_id');
+    this.userAccount = sessionStorage.getItem('acc_id');  
     this.fname = sessionStorage.getItem('acc_fname');
     this.lname = sessionStorage.getItem('acc_lname');
     this.balance = sessionStorage.getItem('acc_balance');
