@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 export class Tab3Page {
   private categoryList
   private accountID
+  private cateName
 
   constructor(private actionCtr:ActionSheetController, private modalCtr:ModalController,private http:HttpClient,private alertCtr:AlertController) {
    this.getCategory()

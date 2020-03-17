@@ -17,6 +17,13 @@ export class Tab2Page {
 
   private transactionList
   private accountID
+  private categoryList
+  private category
+  private balance
+  private type
+  private amount
+  private date
+  private note
 
   constructor(private actionCtr:ActionSheetController,private modalCtr:ModalController, private http:HttpClient, private alertCtr:AlertController, private datePipe:DatePipe) {
     this.get_list_transaction()
@@ -44,6 +51,12 @@ export class Tab2Page {
 
   // 60160203 นายอธิคม วงศ์วาร
   deleteTransaction(transaction) {
+    this.type = transaction.tst_type
+    this.balance = transaction.tst_balance
+    this.amount = transaction.tst_amount
+    this.calculate()
+    this.updateAccount()
+    sessionStorage.setItem("acc_balance",this.balance)
     let url = 'http://localhost/MCash/Transaction/deleteTransaction.php';
     let dataPost = new FormData();
     dataPost.append('tst_id',transaction.tst_id);
@@ -51,8 +64,33 @@ export class Tab2Page {
     data.subscribe(data => {
       console.log('delete success!!');
       
-    })    
+    })     
+  }
+
+  updateAccount(){
+    let url = 'http://localhost/MCash/Account/updateAccount.php';
+    let dataPost = new FormData();
+    dataPost.append("acc_id",sessionStorage.getItem('acc_id'));
+    dataPost.append("acc_balance",this.balance);
+
+    let data:Observable<any> = this.http.post(url,dataPost);
+    data.subscribe(data => {
+      console.log("insert success!!!");
+    }) 
+  }
+
+  calculate(){
+    if(this.type == "รายจ่าย"){
+      
+      this.balance = Number(this.balance) + Number(this.amount)
+    }
+    else{
+      this.balance = Number(this.balance) - Number(this.amount)
+    }
+    console.log("balance => ",this.balance);
     
+    //sessionStorage.setItem('acc_balance',this.balance)
+      
   }
 
   async detailTransaction(transaction) {
