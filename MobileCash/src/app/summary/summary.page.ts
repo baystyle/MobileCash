@@ -51,7 +51,7 @@ export class SummaryPage {
     this.sumCostIncome = 0;
     dataPost.append("start_date",this.datePipe.transform(this.startDate,'yyyy-MM-dd'));
     dataPost.append("end_date",this.datePipe.transform(this.endDate,'yyyy-MM-dd'));
-
+    dataPost.append('acc_id',this.userAccount);
     let data:Observable<any> = this.http.post(url,dataPost);
     data.subscribe(data => {
       console.log("calculate = > ",data);
